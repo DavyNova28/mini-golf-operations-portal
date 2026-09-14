@@ -2,8 +2,8 @@
   "use strict";
 
   const VERSION_FALLBACK = {
-    version: "0.1.9.1",
-    build: "1.9.1",
+    version: "0.1.10",
+    build: "1.10",
     channel: "Development",
     status: "Development"
   };
@@ -277,6 +277,9 @@
         const wrapper = document.createElement("div");
         wrapper.className = "destination-item";
 
+        const card = document.createElement("div");
+        card.className = "destination-card";
+
         const anchor = document.createElement("a");
         anchor.className = "destination-link";
         anchor.innerHTML = `
@@ -291,10 +294,12 @@
         if (!configured) {
           anchor.querySelector(".link-status").textContent = "Not configured";
           anchor.querySelector(".arrow").textContent = "—";
+          card.classList.add("disabled");
         }
 
-        wrapper.appendChild(anchor);
-        wrapper.appendChild(createCopyButton(destination || { id: destinationId, label: item.label || "destination", url: item.url || "" }));
+        card.appendChild(anchor);
+        card.appendChild(createInlineCopyButton(destination || { id: destinationId, label: item.label || "destination", url: item.url || "" }));
+        wrapper.appendChild(card);
         wrapper.appendChild(createFavoriteButton(destination?.id || destinationId, destination?.label || item.label || "destination"));
         list.appendChild(wrapper);
       });
@@ -334,6 +339,52 @@
       wrapper.appendChild(createFavoriteButton(destination?.id || destinationId, destination?.label || item.label || "destination"));
       grid.appendChild(wrapper);
     });
+  }
+
+  function createInlineCopyButton(destination) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "inline-copy-button";
+    button.setAttribute("aria-label", `Copy ${destination?.label || "destination"} link`);
+    button.title = "Copy link";
+
+    const defaultIcon = `
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    `;
+    button.innerHTML = defaultIcon;
+
+    if (!destination || !isConfiguredUrl(destination.url)) {
+      button.disabled = true;
+      button.setAttribute("aria-disabled", "true");
+      return button;
+    }
+
+    button.addEventListener("click", async (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const copied = await copyTextToClipboard(destination.url.trim());
+      if (!copied) {
+        showToast("Could not copy this link. Try again from your browser.", "error");
+        return;
+      }
+
+      button.textContent = "✓";
+      button.classList.add("copied");
+      button.setAttribute("aria-label", `${destination.label || "Destination"} link copied`);
+      showToast(`${destination.label || "Destination"} link copied.`);
+
+      window.setTimeout(() => {
+        button.innerHTML = defaultIcon;
+        button.classList.remove("copied");
+        button.setAttribute("aria-label", `Copy ${destination.label || "destination"} link`);
+      }, 1400);
+    });
+
+    return button;
   }
 
   function createCopyButton(destination) {
