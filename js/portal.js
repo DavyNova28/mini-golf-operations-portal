@@ -2,8 +2,8 @@
   "use strict";
 
   const VERSION_FALLBACK = {
-    version: "0.1.10",
-    build: "1.10",
+    version: "0.1.11",
+    build: "1.11",
     channel: "Development",
     status: "Development"
   };
@@ -324,6 +324,9 @@
       const wrapper = document.createElement("div");
       wrapper.className = "quick-item";
 
+      const card = document.createElement("div");
+      card.className = "quick-card-shell";
+
       const anchor = document.createElement("a");
       anchor.className = "quick-card";
       anchor.innerHTML = `
@@ -332,10 +335,14 @@
         <span>${escapeHtml(item.detail || "")}</span>
       `;
       const configured = applyLink(anchor, item.url || "", destinationId);
-      if (!configured) anchor.querySelector("span:last-child").textContent = "Not configured";
+      if (!configured) {
+        anchor.querySelector("span:last-child").textContent = "Not configured";
+        card.classList.add("disabled");
+      }
 
-      wrapper.appendChild(anchor);
-      wrapper.appendChild(createCopyButton(destination || { id: destinationId, label: item.label || "destination", url: item.url || "" }));
+      card.appendChild(anchor);
+      card.appendChild(createInlineCopyButton(destination || { id: destinationId, label: item.label || "destination", url: item.url || "" }));
+      wrapper.appendChild(card);
       wrapper.appendChild(createFavoriteButton(destination?.id || destinationId, destination?.label || item.label || "destination"));
       grid.appendChild(wrapper);
     });
