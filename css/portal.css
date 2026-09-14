@@ -137,8 +137,8 @@ kbd { min-width: 22px; display: inline-grid; place-items: center; padding: 2px 5
 .shortcut-header h3 { margin: 0; font-size: 14px; }
 .shortcut-count { min-width: 28px; padding: 4px 8px; border-radius: 999px; background: var(--surface-2); color: var(--muted); text-align: center; font-size: 11px; font-weight: 800; }
 .shortcut-list { display: grid; gap: 8px; }
+#favoritesList,
 #recentList {
-  max-height: 184px; /* 3 shortcut rows + 2 gaps */
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-gutter: stable;
@@ -146,9 +146,19 @@ kbd { min-width: 22px; display: inline-grid; place-items: center; padding: 2px 5
   scrollbar-width: thin;
   scrollbar-color: #41546e transparent;
 }
+#favoritesList {
+  max-height: 248px; /* 4 shortcut rows + 3 gaps */
+}
+#recentList {
+  max-height: 184px; /* 3 shortcut rows + 2 gaps */
+}
+#favoritesList::-webkit-scrollbar,
 #recentList::-webkit-scrollbar { width: 8px; }
+#favoritesList::-webkit-scrollbar-track,
 #recentList::-webkit-scrollbar-track { background: transparent; }
+#favoritesList::-webkit-scrollbar-thumb,
 #recentList::-webkit-scrollbar-thumb { background: #41546e; border-radius: 999px; }
+#favoritesList::-webkit-scrollbar-thumb:hover,
 #recentList::-webkit-scrollbar-thumb:hover { background: #526b8a; }
 .shortcut-empty { margin: 20px 2px 4px; color: var(--muted-2); font-size: 12px; line-height: 1.5; }
 .shortcut-link { min-height: 56px; }
