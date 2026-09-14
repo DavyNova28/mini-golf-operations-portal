@@ -198,21 +198,38 @@ kbd { min-width: 22px; display: inline-grid; place-items: center; padding: 2px 5
 .group-open-all:hover { border-color: rgba(100,181,246,.55); background: rgba(100,181,246,.13); transform: translateY(-1px); }
 .group-open-all:active { transform: translateY(0); }
 .link-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
-.destination-item { display: grid; grid-template-columns: minmax(0, 1fr) 40px 40px; gap: 8px; align-items: stretch; }
-.destination-link {
-  min-height: 68px; padding: 13px 14px; border: 1px solid var(--border); border-radius: 13px; background: var(--surface-2);
-  display: flex; align-items: center; justify-content: space-between; gap: 12px; text-decoration: none; font-weight: 750;
+.destination-item { display: grid; grid-template-columns: minmax(0, 1fr) 40px; gap: 8px; align-items: stretch; }
+.destination-card {
+  min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) 34px; align-items: stretch;
+  border: 1px solid var(--border); border-radius: 13px; background: var(--surface-2); overflow: hidden;
   transition: border-color .16s ease, background .16s ease, transform .16s ease;
 }
-.destination-link:hover { border-color: #536a87; background: var(--surface-3); transform: translateY(-1px); }
+.destination-card:hover { border-color: #536a87; background: var(--surface-3); transform: translateY(-1px); }
+.destination-card.disabled { opacity: .48; }
+.destination-card.disabled:hover { border-color: var(--border); background: var(--surface-2); transform: none; }
+.destination-link {
+  min-width: 0; min-height: 68px; padding: 13px 8px 13px 14px; border: 0; border-radius: 0; background: transparent;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; text-decoration: none; font-weight: 750;
+}
+.destination-link:hover { background: transparent; }
 .destination-copy { min-width: 0; }
 .destination-label { display: block; }
 .destination-link small { display: block; margin-top: 4px; }
 .destination-link .tab-name { color: #b7c7db; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: 11px; font-weight: 650; overflow-wrap: anywhere; }
 .destination-link .link-status { color: var(--muted-2); font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
-.destination-link.disabled { cursor: not-allowed; opacity: .48; }
-.destination-link.disabled:hover { border-color: var(--border); background: var(--surface-2); transform: none; }
+.destination-link.disabled { cursor: not-allowed; }
 .destination-link .arrow { color: var(--accent); font-size: 18px; }
+.inline-copy-button {
+  width: 28px; height: 34px; align-self: center; justify-self: center; display: grid; place-items: center;
+  padding: 0; border: 0; border-radius: 8px; background: transparent; color: #73869e; cursor: pointer;
+  transition: color .16s ease, background .16s ease, transform .16s ease;
+}
+.inline-copy-button svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.inline-copy-button:hover { color: var(--accent); background: rgba(100,181,246,.10); }
+.inline-copy-button:focus-visible { outline: 2px solid rgba(100,181,246,.75); outline-offset: 1px; }
+.inline-copy-button:active { transform: scale(.94); }
+.inline-copy-button.copied { color: var(--green); background: var(--green-bg); font-size: 16px; font-weight: 900; }
+.inline-copy-button:disabled { cursor: not-allowed; opacity: .34; }
 
 .quick-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .quick-item { display: grid; grid-template-columns: minmax(0, 1fr) 40px 40px; gap: 8px; align-items: stretch; }
@@ -264,7 +281,8 @@ footer { min-height: 74px; display: flex; align-items: center; justify-content: 
   .search-card { padding: 14px; }
   .search-field-wrap { min-height: 50px; }
   #portalSearch { font-size: 16px; }
-  .search-result, .shortcut-item, .destination-item, .quick-item { grid-template-columns: minmax(0, 1fr) 38px 38px; }
+  .search-result, .shortcut-item, .quick-item { grid-template-columns: minmax(0, 1fr) 38px 38px; }
+  .destination-item { grid-template-columns: minmax(0, 1fr) 38px; }
   .favorite-button, .copy-button { width: 38px; }
   .link-group-header { align-items: flex-start; }
   .link-list { grid-template-columns: 1fr; }
