@@ -2,14 +2,15 @@
   "use strict";
 
   const VERSION_FALLBACK = {
-    version: "0.1.2",
-    build: "1.2",
+    version: "0.1.3",
+    build: "1.3",
     channel: "Development",
     status: "Development"
   };
 
   const config = window.PORTAL_CONFIG || {};
   const $ = (id) => document.getElementById(id);
+  let activeProfileId = null;
 
   function isConfiguredUrl(url) {
     return typeof url === "string" && /^https?:\/\//i.test(url.trim());
@@ -49,20 +50,48 @@
       button.type = "button";
       button.className = "profile-card";
       button.dataset.profileId = profile.id;
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-controls", "profilePanel");
       button.innerHTML = `
         <span class="profile-icon" aria-hidden="true">${profile.icon || "📁"}</span>
         <strong>${escapeHtml(profile.title || "Profile")}</strong>
         <p>${escapeHtml(profile.description || "")}</p>
         <span class="profile-count">${total} destination${total === 1 ? "" : "s"}</span>
       `;
-      button.addEventListener("click", () => openProfile(profile.id));
+      button.addEventListener("click", () => toggleProfile(profile.id));
       grid.appendChild(button);
     });
+  }
+
+  function setActiveProfileCard(profileId) {
+    document.querySelectorAll(".profile-card").forEach((card) => {
+      const isActive = card.dataset.profileId === profileId;
+      card.classList.toggle("active", isActive);
+      card.setAttribute("aria-expanded", isActive ? "true" : "false");
+    });
+  }
+
+  function closeProfile() {
+    activeProfileId = null;
+    $("profilePanel").hidden = true;
+    setActiveProfileCard(null);
+  }
+
+  function toggleProfile(profileId) {
+    if (activeProfileId === profileId && !$("profilePanel").hidden) {
+      closeProfile();
+      return;
+    }
+
+    openProfile(profileId);
   }
 
   function openProfile(profileId) {
     const profile = (config.profiles || []).find((item) => item.id === profileId);
     if (!profile) return;
+
+    activeProfileId = profileId;
+    setActiveProfileCard(profileId);
 
     $("profilePanelKicker").textContent = "SCHEDULE PROFILE";
     $("profilePanelTitle").textContent = profile.title || "Profile";
@@ -161,9 +190,7 @@
     renderQuickLinks();
     loadVersion();
 
-    $("closeProfilePanel").addEventListener("click", () => {
-      $("profilePanel").hidden = true;
-    });
+    $("closeProfilePanel").addEventListener("click", closeProfile);
   }
 
   init();

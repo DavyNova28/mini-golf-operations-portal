@@ -1,5 +1,5 @@
 /*
-  Mini Golf Operations Portal - Build 1.2
+  Mini Golf Operations Portal - Build 1.3
   -------------------------------------
   This is the only file you need to edit when a destination URL changes.
   Leave url: "" to show a destination as "Not configured" instead of a broken link.
