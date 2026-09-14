@@ -2,8 +2,8 @@
   "use strict";
 
   const VERSION_FALLBACK = {
-    version: "0.1.3",
-    build: "1.3",
+    version: "0.1.4",
+    build: "1.4",
     channel: "Development",
     status: "Development"
   };
@@ -56,7 +56,7 @@
         <span class="profile-icon" aria-hidden="true">${profile.icon || "📁"}</span>
         <strong>${escapeHtml(profile.title || "Profile")}</strong>
         <p>${escapeHtml(profile.description || "")}</p>
-        <span class="profile-count">${total} destination${total === 1 ? "" : "s"}</span>
+        <span class="profile-count">${total} Google Sheet tab${total === 1 ? "" : "s"}</span>
       `;
       button.addEventListener("click", () => toggleProfile(profile.id));
       grid.appendChild(button);
@@ -115,15 +115,16 @@
         const anchor = document.createElement("a");
         anchor.className = "destination-link";
         anchor.innerHTML = `
-          <span>
-            ${escapeHtml(item.label || "Open")}
-            <small>${escapeHtml(item.detail || "")}</small>
+          <span class="destination-copy">
+            <span class="destination-label">${escapeHtml(item.label || "Open")}</span>
+            <small class="tab-name">${escapeHtml(item.tab || "Google Sheet tab")}</small>
+            <small class="link-status">Open Google Sheet</small>
           </span>
           <span class="arrow" aria-hidden="true">↗</span>
         `;
         const configured = applyLink(anchor, item.url || "");
         if (!configured) {
-          anchor.querySelector("small").textContent = "Not configured";
+          anchor.querySelector(".link-status").textContent = "Not configured";
           anchor.querySelector(".arrow").textContent = "—";
         }
         list.appendChild(anchor);

@@ -1,7 +1,11 @@
 /*
-  Mini Golf Operations Portal - Build 1.3
+  Mini Golf Operations Portal - Build 1.4
   -------------------------------------
-  This is the only file you need to edit when a destination URL changes.
+  All Google Sheets destinations are centralized here.
+
+  Each Schedule Profile link includes the exact Google Sheets tab name in `tab`.
+  When you are ready, add the full destination URL to the matching `url` value.
+
   Leave url: "" to show a destination as "Not configured" instead of a broken link.
 */
 
@@ -22,16 +26,46 @@ window.PORTAL_CONFIG = {
       id: "regular",
       icon: "📅",
       title: "Regular Profile",
-      description: "Normal weekly operating schedules.",
+      description: "Normal weekly operating schedules grouped by screen.",
       groups: [
         {
-          title: "Regular schedule destinations",
+          title: "Arcade",
           links: [
-            { label: "Closed Schedule", detail: "Regular profile", url: "" },
-            { label: "Wednesday", detail: "Regular profile", url: "" },
-            { label: "Thursday / Friday", detail: "Regular profile", url: "" },
-            { label: "Saturday", detail: "Regular profile", url: "" },
-            { label: "Sunday", detail: "Regular profile", url: "" }
+            { label: "Closed", tab: "ArcadeRegularClosed", url: "" },
+            { label: "Wednesday", tab: "ArcadeRegularWed", url: "" },
+            { label: "Thursday / Friday", tab: "ArcadeRegularThuFri", url: "" },
+            { label: "Saturday", tab: "ArcadeRegularSat", url: "" },
+            { label: "Sunday", tab: "ArcadeRegularSun", url: "" }
+          ]
+        },
+        {
+          title: "Golf",
+          links: [
+            { label: "Closed", tab: "GolfRegularClosed", url: "" },
+            { label: "Wednesday", tab: "GolfRegularWed", url: "" },
+            { label: "Thursday / Friday", tab: "GolfRegularThuFri", url: "" },
+            { label: "Saturday", tab: "GolfRegularSat", url: "" },
+            { label: "Sunday", tab: "GolfRegularSun", url: "" }
+          ]
+        },
+        {
+          title: "Slush",
+          links: [
+            { label: "Closed", tab: "SlushRegularClosed", url: "" },
+            { label: "Wednesday", tab: "SlushRegularWed", url: "" },
+            { label: "Thursday / Friday", tab: "SlushRegularThuFri", url: "" },
+            { label: "Saturday", tab: "SlushRegularSat", url: "" },
+            { label: "Sunday", tab: "SlushRegularSun", url: "" }
+          ]
+        },
+        {
+          title: "Info Arcade",
+          links: [
+            { label: "Closed", tab: "infoArcadeRegularClosed", url: "" },
+            { label: "Wednesday", tab: "infoArcadeRegularWed", url: "" },
+            { label: "Thursday / Friday", tab: "infoArcadeRegularThuFri", url: "" },
+            { label: "Saturday", tab: "infoArcadeRegularSat", url: "" },
+            { label: "Sunday", tab: "infoArcadeRegularSun", url: "" }
           ]
         }
       ]
@@ -40,15 +74,35 @@ window.PORTAL_CONFIG = {
       id: "summer",
       icon: "☀️",
       title: "Summer Profile",
-      description: "Summer schedule source tabs.",
+      description: "Summer schedule source tabs grouped by screen.",
       groups: [
         {
-          title: "Summer source tabs",
+          title: "Arcade",
           links: [
-            { label: "Arcade", detail: "Summer profile", url: "" },
-            { label: "Golf", detail: "Summer profile", url: "" },
-            { label: "Slush", detail: "Summer profile", url: "" },
-            { label: "infoArcade", detail: "Summer profile", url: "" }
+            { label: "Monday - Thursday", tab: "ArcadeWeek", url: "" },
+            { label: "Friday - Saturday", tab: "Arcade", url: "" },
+            { label: "Sunday", tab: "ArcadeSunday", url: "" }
+          ]
+        },
+        {
+          title: "Golf",
+          links: [
+            { label: "Monday - Saturday", tab: "Golf", url: "" },
+            { label: "Sunday", tab: "GolfSunday", url: "" }
+          ]
+        },
+        {
+          title: "Slush",
+          links: [
+            { label: "Monday - Saturday", tab: "Slush", url: "" },
+            { label: "Sunday", tab: "SlushSunday", url: "" }
+          ]
+        },
+        {
+          title: "Info Arcade",
+          links: [
+            { label: "Monday - Saturday", tab: "infoArcade", url: "" },
+            { label: "Sunday", tab: "infoArcadeSunday", url: "" }
           ]
         }
       ]
@@ -56,22 +110,31 @@ window.PORTAL_CONFIG = {
     {
       id: "holiday",
       icon: "🎉",
-      title: "Holiday Schedule",
-      description: "Date-specific exceptions and reusable holiday tabs.",
+      title: "Holiday Profile",
+      description: "Reusable holiday schedule source tabs grouped by screen.",
       groups: [
         {
-          title: "Holiday Schedule Days",
+          title: "Golf",
           links: [
-            { label: "Holiday Schedule Days", detail: "Special dates & closures", url: "" }
+            { label: "Holiday", tab: "GolfHoliday", url: "" }
           ]
         },
         {
-          title: "Reusable holiday source tabs",
+          title: "Arcade",
           links: [
-            { label: "ArcadeHoliday", detail: "Holiday source", url: "" },
-            { label: "GolfHoliday", detail: "Holiday source", url: "" },
-            { label: "SlushHoliday", detail: "Holiday source", url: "" },
-            { label: "infoArcadeHoliday", detail: "Holiday source", url: "" }
+            { label: "Holiday", tab: "ArcadeHoliday", url: "" }
+          ]
+        },
+        {
+          title: "Slush",
+          links: [
+            { label: "Holiday", tab: "SlushHoliday", url: "" }
+          ]
+        },
+        {
+          title: "Info Arcade",
+          links: [
+            { label: "Holiday", tab: "infoArcadeHoliday", url: "" }
           ]
         }
       ]
@@ -79,14 +142,19 @@ window.PORTAL_CONFIG = {
     {
       id: "promo",
       icon: "🏷️",
-      title: "Promo Schedule",
-      description: "Recurring promotional schedule destinations.",
+      title: "Promo Profile",
+      description: "Recurring promotional schedule source tabs.",
       groups: [
         {
-          title: "Promo sources",
+          title: "Golf",
           links: [
-            { label: "Promo Golf", detail: "Promotional schedule", url: "" },
-            { label: "Promo Arcade", detail: "Promotional schedule", url: "" }
+            { label: "Wednesday", tab: "GolfPromoWednesday", url: "" }
+          ]
+        },
+        {
+          title: "Arcade",
+          links: [
+            { label: "Thursday", tab: "ArcadePromoThursday", url: "" }
           ]
         }
       ]
