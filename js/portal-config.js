@@ -12,7 +12,7 @@
 window.PORTAL_CONFIG = {
   dashboards: {
     prod: "https://davynova28.github.io/mini-golf-signage/dashboard-v3.html?version=117.3",
-    dev: "https://davynova28.github.io/mini-golf-signage-dev/dashboard-v3.html?version=117.3"
+    dev: "https://davynova28.github.io/mini-golf-signage-dev/dashboard-v3.html?version=118"
   },
 
   quickLinks: [
