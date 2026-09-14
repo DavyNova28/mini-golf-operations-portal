@@ -4,8 +4,8 @@ A lightweight navigation hub for Mini Golf & Arcades operations.
 
 ## Build
 
-- Version: `v0.1.1`
-- Build: `1`
+- Version: `v0.1.2`
+- Build: `1.2`
 - Channel: `Development`
 
 ## Purpose
@@ -16,7 +16,7 @@ Its job is to provide one clean place to open:
 
 - PROD Dashboard
 - DEV Dashboard
-- Google Sheets workbooks
+- Shared Operations Google Sheet
 - Regular Profile destinations
 - Summer Profile destinations
 - Holiday Schedule destinations
@@ -26,7 +26,7 @@ Its job is to provide one clean place to open:
 
 ## Files to Upload
 
-Upload the entire project structure to the Portal DEV repository:
+Upload the entire project structure to the Portal repository:
 
 - `index.html`
 - `version.json`
@@ -35,8 +35,8 @@ Upload the entire project structure to the Portal DEV repository:
 - `css/portal.css`
 - `js/portal-config.js`
 - `js/portal.js`
-- `assets/images/.gitkeep`
-- `assets/icons/.gitkeep`
+- `assets/images/JurassiqueLogo.png`
+- `assets/icons/favicon.png`
 
 No Apps Script files are required.
 
@@ -46,9 +46,9 @@ All destinations are centralized in:
 
 `js/portal-config.js`
 
-The PROD and DEV Dashboard links are already configured.
+The PROD and DEV Dashboard links are already configured. The Portal uses one shared Operations Google Sheet for both environments.
 
-For Google Sheets and profile destinations, replace each empty URL:
+For the shared Operations Google Sheet and profile destinations, replace each empty URL:
 
 ```js
 url: ""

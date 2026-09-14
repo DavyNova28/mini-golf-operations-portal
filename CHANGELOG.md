@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.1.2 — Build 1.2
+
+### Changed
+- Replaced the separate PROD and DEV Google Sheets Quick Access entries with one shared **Operations Google Sheet** entry.
+- Updated the Quick Access layout from four columns to three columns for the shared-workbook structure.
+- Updated Quick Access wording to describe the single shared operations workbook.
+- Aligned the README with the one-repository Portal setup and the shared Google Sheet architecture.
+- Updated version and cache markers to Build 1.2.
+
 ## v0.1.1 — Build 1.1
 
 ### Changed
