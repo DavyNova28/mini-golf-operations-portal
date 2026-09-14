@@ -4,8 +4,8 @@ A lightweight navigation hub for Mini Golf & Arcades operations.
 
 ## Build
 
-- Version: `v0.1.2`
-- Build: `1.2`
+- Version: `v0.1.3`
+- Build: `1.3`
 - Channel: `Development`
 
 ## Purpose
@@ -39,6 +39,15 @@ Upload the entire project structure to the Portal repository:
 - `assets/icons/favicon.png`
 
 No Apps Script files are required.
+
+## Schedule Profile Toggle
+
+Schedule Profile cards behave like an accordion selector:
+
+- Click a profile card to open its destinations.
+- Click the same active profile card again to close it.
+- Click a different profile card to switch the open panel to that profile.
+- The **Close** button remains available inside the open panel.
 
 ## Configure Links
 
