@@ -4,8 +4,8 @@ A lightweight navigation hub for Mini Golf & Arcades operations.
 
 ## Build
 
-- Version: `v0.1.6`
-- Build: `1.6`
+- Version: `v0.1.7`
+- Build: `1.7`
 - Channel: `Development`
 - Stable checkpoint: `v0.1.4 / Build 1.4`
 
@@ -25,39 +25,43 @@ Its job is to provide one clean place to open:
 - Audit Logs
 - Backup History
 
+## Build 1.7 — Schedule Workflow
+
+Build 1.7 adds small workflow tools for working with schedule destinations more quickly while preserving the same verified `portal-config.js` structure.
+
+### Open All per Screen Group
+
+Regular and Summer screen groups that contain more than one configured schedule tab now show an **Open All** action.
+
+For example, **Regular Profile → Arcade → Open All** attempts to open every configured Arcade schedule tab for that group in separate browser tabs.
+
+Browser pop-up rules still apply. If the browser blocks some or all additional tabs, the Portal shows a short message explaining what happened.
+
+### Copy Link Actions
+
+Configured destinations now include a **Copy Link** action in Schedule Profiles, Quick Access, Search results, Favorites, and Recently Opened lists.
+
+Copying a link:
+
+- does not open the destination;
+- does not modify Google Sheets;
+- uses the browser clipboard when available;
+- falls back to the browser's legacy copy method when needed;
+- briefly confirms success in the Portal.
+
+Dashboard URLs are also copyable when they appear in Portal Search results.
+
+### Recent History
+
+Using **Open All** records successfully opened schedule destinations in Recently Opened without changing Favorites or configuration.
+
 ## Build 1.6 — App Experience
 
-Build 1.6 turns the Portal into an installable Progressive Web App while preserving the navigation-only architecture.
-
-### Installable Portal
-
-Supported Chromium browsers can show an **Install Portal** button when the site meets install requirements. Once installed, the Portal opens in its own standalone window and uses the Jurassique artwork as its app icon.
-
-On iPhone/iPad, the Portal shows **Add to Home Screen** guidance. Use the browser Share menu and choose **Add to Home Screen**.
-
-### Offline App Shell
-
-A small service worker caches the Portal shell, including HTML, CSS, JavaScript, configuration, version metadata, logo, and icons.
-
-The caching strategy is intentionally conservative:
-
-- Portal code and configuration use **network first**, then fall back to the cached copy if the network is unavailable.
-- Images use a cached copy while refreshing in the background.
-- External Google Sheets and Dashboard destinations are **not** intercepted or cached by the Portal.
-- Every Portal build uses its own cache name so older Build 1.6-era caches are removed when a newer service worker activates.
-
-This means installing the Portal does not change or control the signage system. If the Portal is offline, the interface can still launch from cache, but external destinations still require whatever network access those services normally need.
-
-### Mobile / Standalone Polish
-
-- Added safe-area support for iPhone/iPad home-screen mode.
-- Added dedicated 180px Apple touch icon.
-- Added 192px, 512px, and maskable PWA icons.
-- Added standalone app metadata and theme colors.
+Build 1.6 added Progressive Web App installation, iPhone/iPad Home Screen support, app icons, safe-area polish, and a conservative offline Portal shell.
 
 ## Build 1.5 — Portal Usability
 
-Build 1.5 added browser-only Quick Search, Favorites, Recently Opened links, remembered Schedule Profile state, and usability refinements. These features remain unchanged in Build 1.6.
+Build 1.5 added browser-only Quick Search, Favorites, Recently Opened links, remembered Schedule Profile state, and usability refinements.
 
 ## Files to Upload
 
@@ -83,10 +87,12 @@ No Apps Script files are required.
 
 ## Persistent Portal Configuration
 
-All destinations are centralized in `js/portal-config.js`. Build 1.6 does not require a new configuration structure. Keep the verified configuration unless a link, Google Sheets tab, profile, or Quick Access destination actually changes.
+All destinations remain centralized in `js/portal-config.js`. **Build 1.7 does not require any new configuration fields or URL changes.** Keep the verified configuration unless a real destination, Google Sheets tab, profile, or Quick Access link changes.
 
-## Existing Usability Features
+## Existing Features
 
+- Installable Portal / PWA experience
+- iPhone/iPad Add to Home Screen support
 - Portal-wide Quick Search
 - `Ctrl + K` / `⌘ + K` search shortcut
 - Browser-local Favorites
@@ -94,6 +100,8 @@ All destinations are centralized in `js/portal-config.js`. Build 1.6 does not re
 - Remembered open Schedule Profile
 - Toggle-to-open / toggle-to-close Profile cards
 - Dedicated Close button inside the open Profile
+- Open All actions for multi-tab schedule groups
+- Copy Link actions for configured destinations
 - Responsive desktop, tablet, and mobile layout
 
 ## Assets

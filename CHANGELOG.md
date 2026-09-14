@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.1.7 — Build 1.7
+
+### Added
+- Added **Open All** actions for Schedule Profile screen groups containing multiple configured tabs.
+- Added **Copy Link** actions to Schedule Profile destinations, Quick Access cards, Search results, Favorites, and Recently Opened destinations.
+- Added clipboard fallback support for browsers that do not expose the modern Clipboard API.
+- Added lightweight Portal toast feedback for copied links and Open All results.
+
+### Changed
+- Open All actions add successfully opened schedule destinations to Recently Opened in one batch.
+- Updated destination action layouts to accommodate Copy Link and Favorite controls on desktop and mobile.
+- Updated Portal version metadata, service-worker cache identity, and cache-busting markers to Build 1.7.
+- Kept `js/portal-config.js` unchanged; Build 1.7 requires no destination/configuration migration.
+
+### Safety / Reliability
+- Open All only attempts to open configured HTTP/HTTPS destinations.
+- Browser pop-up blocking is detected where possible and surfaced to the user without changing Portal state or configuration.
+- Copy actions never modify Google Sheets or the signage backend.
+
 ## v0.1.6 — Build 1.6
 
 ### Added
