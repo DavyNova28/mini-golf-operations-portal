@@ -4,8 +4,8 @@ A lightweight navigation hub for Mini Golf & Arcades operations.
 
 ## Build
 
-- Version: `v0.1.10`
-- Build: `1.10`
+- Version: `v0.1.11`
+- Build: `1.11`
 - Channel: `Development`
 - Stable checkpoint: `v0.1.4 / Build 1.4`
 
@@ -24,6 +24,16 @@ Its job is to provide one clean place to open:
 - Promo Schedule destinations
 - Audit Logs
 - Backup History
+
+## Build 1.11 — Quick Access Inline Actions
+
+Build 1.11 extends the clean inline Copy Link treatment from Schedule Profile cards to **Quick Access**.
+
+- Quick Access no longer uses a separate full-height Copy Link button.
+- A subtle inline link icon now lives inside each Quick Access card.
+- The Favorite star remains the dedicated action on the right.
+- Copy confirmation still uses the temporary checkmark and toast feedback.
+- `portal-config.js` requires no changes.
 
 ## Build 1.10 — Inline Copy Link Refresh
 
@@ -138,7 +148,7 @@ No Apps Script files are required.
 
 ## Persistent Portal Configuration
 
-All destinations remain centralized in `js/portal-config.js`. **Build 1.10 does not require any new configuration fields or URL changes.** Keep the verified configuration unless a real destination, Google Sheets tab, profile, or Quick Access link changes.
+All destinations remain centralized in `js/portal-config.js`. **Build 1.11 does not require any new configuration fields or URL changes.** Keep the verified configuration unless a real destination, Google Sheets tab, profile, or Quick Access link changes.
 
 ## Existing Features
 

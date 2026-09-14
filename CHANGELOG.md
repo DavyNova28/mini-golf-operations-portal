@@ -1,3 +1,16 @@
+## v0.1.11 — Build 1.11
+
+### Quick Access Inline Actions
+
+- Extended the cleaner inline Copy Link design to Quick Access cards.
+- Removed the separate full-height Copy Link action from Quick Access.
+- Kept the Favorite star as the dedicated action on the right.
+- Preserved existing copy confirmation, toast feedback, and destination behavior.
+- No changes to `portal-config.js` or destination URLs.
+- Bumped Portal and service-worker cache markers to Build 1.11.
+
+---
+
 ## v0.1.10 — Build 1.10
 
 ### Changed
