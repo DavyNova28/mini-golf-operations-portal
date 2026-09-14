@@ -4,7 +4,7 @@ A lightweight navigation hub for Mini Golf & Arcades operations.
 
 ## Build
 
-- Version: `v0.1.0`
+- Version: `v0.1.1`
 - Build: `1`
 - Channel: `Development`
 
@@ -65,3 +65,10 @@ If a URL remains empty, the Portal safely shows the destination as **Not configu
 ## Recommended GitHub Pages URL
 
 Once GitHub Pages is enabled, the site can be served directly from the repository root.
+
+## Build 1.1 assets
+
+- `assets/icons/favicon.png` — browser/tab icon.
+- `assets/images/JurassiqueLogo.png` — Portal header logo.
+
+These replace the Build 1 placeholder golf icon without changing Portal navigation behavior.

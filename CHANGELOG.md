@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.1 — Build 1.1
+
+### Changed
+- Replaced the placeholder golf icon in the Portal header with the supplied Jurassique logo.
+- Added the supplied browser favicon for Chrome, Edge, Safari, and other supported browsers.
+- Added Apple touch icon metadata.
+- Updated cache markers and visible Portal version to Build 1.1.
+
 All notable changes to the Mini Golf Operations Portal will be documented here.
 
 ## [0.1.0] - Build 1 - Development
