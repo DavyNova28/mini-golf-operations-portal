@@ -1,5 +1,5 @@
 /*
-  Mini Golf Operations Portal - Build 1
+  Mini Golf Operations Portal - Build 1.2
   -------------------------------------
   This is the only file you need to edit when a destination URL changes.
   Leave url: "" to show a destination as "Not configured" instead of a broken link.
@@ -12,8 +12,7 @@ window.PORTAL_CONFIG = {
   },
 
   quickLinks: [
-    { id: "prodSheet", icon: "📗", label: "PROD Google Sheets", detail: "Operational workbook", url: "" },
-    { id: "devSheet", icon: "📘", label: "DEV Google Sheets", detail: "Development workbook", url: "" },
+    { id: "operationsSheet", icon: "📗", label: "Operations Google Sheet", detail: "Shared operational workbook", url: "" },
     { id: "audit", icon: "🧾", label: "Audit Logs", detail: "System activity history", url: "" },
     { id: "backups", icon: "💾", label: "Backup History", detail: "Schedule backups", url: "" }
   ],

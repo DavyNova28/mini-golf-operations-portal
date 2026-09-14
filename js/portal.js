@@ -2,8 +2,8 @@
   "use strict";
 
   const VERSION_FALLBACK = {
-    version: "0.1.0",
-    build: "1",
+    version: "0.1.2",
+    build: "1.2",
     channel: "Development",
     status: "Development"
   };
