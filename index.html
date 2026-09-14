@@ -1,1 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101722">
+  <title>Mini Golf Operations Portal</title>
+  <link rel="stylesheet" href="css/portal.css?build=1">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-mark" aria-hidden="true">⛳</div>
+        <div>
+          <p class="eyebrow">MINI GOLF &amp; ARCADES</p>
+          <h1>Operations Portal</h1>
+        </div>
+      </div>
+      <div class="release-meta" aria-label="Portal version information">
+        <span class="pill pill-dev" id="channelBadge">Development</span>
+        <span class="pill" id="versionBadge">v0.1.0 · Build 1</span>
+      </div>
+    </header>
 
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="section-kicker">ONE PLACE TO START</p>
+          <h2>Everything you use to run the signage system.</h2>
+          <p>Open the live Dashboard, jump into the development environment, or navigate directly to schedule and system resources.</p>
+        </div>
+        <div class="hero-actions" aria-label="Primary dashboard links">
+          <a class="action-card action-prod" id="prodDashboardLink" href="#">
+            <span class="action-icon" aria-hidden="true">🚀</span>
+            <span>
+              <small>PRODUCTION</small>
+              <strong>Open PROD Dashboard</strong>
+              <em>Live system</em>
+            </span>
+          </a>
+          <a class="action-card action-dev" id="devDashboardLink" href="#">
+            <span class="action-icon" aria-hidden="true">🛠️</span>
+            <span>
+              <small>DEVELOPMENT</small>
+              <strong>Open DEV Dashboard</strong>
+              <em>Testing &amp; future builds</em>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <section class="portal-section" aria-labelledby="profilesTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">SCHEDULE NAVIGATION</p>
+            <h2 id="profilesTitle">Schedule Profiles</h2>
+          </div>
+          <p>Choose a profile to reveal its approved Google Sheets destinations.</p>
+        </div>
+
+        <div class="profile-grid" id="profileGrid" aria-live="polite"></div>
+        <div class="profile-panel" id="profilePanel" hidden>
+          <div class="profile-panel-header">
+            <div>
+              <p class="section-kicker" id="profilePanelKicker">PROFILE</p>
+              <h3 id="profilePanelTitle">Profile</h3>
+              <p id="profilePanelDescription"></p>
+            </div>
+            <button type="button" class="ghost-button" id="closeProfilePanel">Close</button>
+          </div>
+          <div class="link-groups" id="profileLinkGroups"></div>
+        </div>
+      </section>
+
+      <section class="portal-section" aria-labelledby="systemTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">SYSTEM &amp; DATA</p>
+            <h2 id="systemTitle">Quick Access</h2>
+          </div>
+          <p>Direct links for the files and tools you use outside the Dashboard.</p>
+        </div>
+        <div class="quick-grid" id="quickGrid"></div>
+      </section>
+
+      <section class="status-note" aria-label="Portal note">
+        <div aria-hidden="true">💡</div>
+        <div>
+          <strong>This Portal is navigation-only.</strong>
+          <p>It does not read or modify the signage system, Apps Script, schedules, or telemetry. Links are configured separately in <code>js/portal-config.js</code>.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Mini Golf Operations Portal</span>
+      <span id="footerVersion">v0.1.0 · Build 1 · Development</span>
+    </footer>
+  </div>
+
+  <noscript>
+    <div class="noscript">JavaScript is required to render the Portal navigation.</div>
+  </noscript>
+
+  <script src="js/portal-config.js?build=1"></script>
+  <script src="js/portal.js?build=1"></script>
+</body>
+</html>
