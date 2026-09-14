@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.1.8 — Build 1.8
+
+### Changed
+- Limited the visible **Recently Opened** list to 3 destinations at a time.
+- Added an internal vertical scroll area when more than 3 recent destinations are available, preventing the Portal page from growing taller as recent history fills.
+- Kept the existing recent-history storage limit unchanged, so older recent destinations remain accessible by scrolling.
+- Kept Favorites and `js/portal-config.js` unchanged.
+- Updated Portal version metadata, service-worker cache identity, and cache-busting markers to Build 1.8.
+
 ## v0.1.7 — Build 1.7
 
 ### Added

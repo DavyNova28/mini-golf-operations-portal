@@ -4,8 +4,8 @@ A lightweight navigation hub for Mini Golf & Arcades operations.
 
 ## Build
 
-- Version: `v0.1.7`
-- Build: `1.7`
+- Version: `v0.1.8`
+- Build: `1.8`
 - Channel: `Development`
 - Stable checkpoint: `v0.1.4 / Build 1.4`
 
@@ -24,6 +24,18 @@ Its job is to provide one clean place to open:
 - Promo Schedule destinations
 - Audit Logs
 - Backup History
+
+## Build 1.8 — Compact Recent History
+
+Build 1.8 keeps the **Recently Opened** panel from growing taller as more destinations are opened.
+
+### Recently Opened Scroll Area
+
+- Up to **3 destinations** are visible at once.
+- Additional recent destinations remain available by scrolling **inside the Recently Opened panel**.
+- The existing recent-history limit is unchanged; this is only a display/layout change.
+- Favorites are unaffected.
+- `js/portal-config.js` is unchanged and requires no URL or structure updates.
 
 ## Build 1.7 — Schedule Workflow
 
@@ -87,7 +99,7 @@ No Apps Script files are required.
 
 ## Persistent Portal Configuration
 
-All destinations remain centralized in `js/portal-config.js`. **Build 1.7 does not require any new configuration fields or URL changes.** Keep the verified configuration unless a real destination, Google Sheets tab, profile, or Quick Access link changes.
+All destinations remain centralized in `js/portal-config.js`. **Build 1.8 does not require any new configuration fields or URL changes.** Keep the verified configuration unless a real destination, Google Sheets tab, profile, or Quick Access link changes.
 
 ## Existing Features
 
