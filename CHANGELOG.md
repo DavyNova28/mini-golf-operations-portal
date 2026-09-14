@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.1.5 — Build 1.5
+
+### Added
+- Added Portal-wide Quick Search across Dashboards, Quick Access links, friendly schedule labels, screen groups, and exact Google Sheets tab names.
+- Added `Ctrl + K` / `⌘ + K` keyboard shortcut to focus Portal search.
+- Added browser-local Favorites with star controls and a 12-destination limit.
+- Added browser-local Recently Opened history for the last 8 destinations, including a Clear action.
+- Added remembered Schedule Profile state so the last open profile is restored after reload.
+
+### Changed
+- Added smoother Profile panel opening and closing transitions with reduced-motion support.
+- Added favorite controls to Schedule Profile destinations and Quick Access cards.
+- Improved desktop and mobile layouts for search results, shortcuts, schedule links, and Quick Access cards.
+- Updated the Portal note to clarify that convenience state is stored only in the current browser.
+- Updated Portal metadata and cache markers to Build 1.5.
+
 ## v0.1.4 — Build 1.4
 
 ### Changed

@@ -4,9 +4,10 @@ A lightweight navigation hub for Mini Golf & Arcades operations.
 
 ## Build
 
-- Version: `v0.1.4`
-- Build: `1.4`
+- Version: `v0.1.5`
+- Build: `1.5`
 - Channel: `Development`
+- Stable checkpoint: `v0.1.4 / Build 1.4`
 
 ## Purpose
 
@@ -23,6 +24,48 @@ Its job is to provide one clean place to open:
 - Promo Schedule destinations
 - Audit Logs
 - Backup History
+
+## Build 1.5 — Portal Usability
+
+Build 1.5 adds browser-only quality-of-life tools without adding any backend dependency.
+
+### Quick Search
+
+Search across every configured destination, including:
+
+- PROD and DEV Dashboards
+- Quick Access links
+- Schedule profile labels
+- Screen names
+- Friendly day labels
+- Exact Google Sheets tab names
+
+Examples:
+
+- `Arcade Saturday`
+- `Golf Holiday`
+- `infoArcadeRegularThuFri`
+- `Audit`
+
+Use `Ctrl + K` on Windows or `⌘ + K` on macOS to focus the search box.
+
+### Favorites
+
+Star frequently used destinations to pin them in the **Favorites** panel. Up to 12 favorites are retained in the current browser.
+
+### Recently Opened
+
+The Portal remembers the last 8 configured destinations opened from the Portal. Recent history can be cleared at any time.
+
+### Remembered Schedule Profile
+
+If a Schedule Profile is open when the page is reloaded, the Portal restores that profile automatically. Closing the profile clears the remembered state.
+
+### Local Storage Only
+
+Favorites, recent destinations, and the remembered Schedule Profile are stored with browser `localStorage` only. They are not sent to Google Sheets, GitHub, Apps Script, or the signage system.
+
+If browser storage is unavailable, the Portal still works normally; only these convenience features stop persisting.
 
 ## Files to Upload
 
@@ -48,12 +91,11 @@ Schedule Profile cards behave like an accordion selector:
 - Click the same active profile card again to close it.
 - Click a different profile card to switch the open panel to that profile.
 - The **Close** button remains available inside the open panel.
+- Build 1.5 remembers the currently open profile after a reload.
 
 ## Schedule Tab Structure
 
-Build 1.4 models the actual Operations Google Sheet tabs used by each schedule profile. The Portal groups those tabs by screen so a profile can contain every source tab it needs instead of a single generic destination.
-
-Current profile structure:
+The Portal models the actual Operations Google Sheet tabs used by each schedule profile.
 
 - Regular Profile: 20 tabs across Arcade, Golf, Slush, and Info Arcade.
 - Summer Profile: 9 tabs across Arcade, Golf, Slush, and Info Arcade.
@@ -68,29 +110,11 @@ All destinations are centralized in:
 
 `js/portal-config.js`
 
-The PROD and DEV Dashboard links are already configured. The Portal uses one shared Operations Google Sheet for both environments.
+The current configuration contains the verified Portal destinations for the shared Operations Google Sheet and both Dashboard environments.
 
-For the shared Operations Google Sheet and each individual schedule tab, replace the matching empty URL:
+When a future destination changes, update only its matching `url` value. If a URL is empty or invalid, the Portal safely shows that destination as unavailable instead of opening a broken link.
 
-```js
-url: ""
-```
-
-with the full destination URL, for example:
-
-```js
-url: "https://docs.google.com/spreadsheets/d/.../edit#gid=123456789"
-```
-
-If a URL remains empty, the Portal safely shows the destination as **Not configured** while still displaying the exact Google Sheets tab name.
-
-## Recommended GitHub Pages URL
-
-Once GitHub Pages is enabled, the site can be served directly from the repository root.
-
-## Build 1.1 assets
+## Assets
 
 - `assets/icons/favicon.png` — browser/tab icon.
 - `assets/images/JurassiqueLogo.png` — Portal header logo.
-
-These replace the Build 1 placeholder golf icon without changing Portal navigation behavior.

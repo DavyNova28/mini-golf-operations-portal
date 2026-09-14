@@ -7,7 +7,7 @@
   <title>Mini Golf Operations Portal</title>
   <link rel="icon" type="image/png" href="assets/icons/favicon.png">
   <link rel="apple-touch-icon" href="assets/icons/favicon.png">
-  <link rel="stylesheet" href="css/portal.css?build=1.4">
+  <link rel="stylesheet" href="css/portal.css?build=1.5">
 </head>
 <body>
   <div class="page-shell">
@@ -23,7 +23,7 @@
       </div>
       <div class="release-meta" aria-label="Portal version information">
         <span class="pill pill-dev" id="channelBadge">Development</span>
-        <span class="pill" id="versionBadge">v0.1.4 · Build 1.4</span>
+        <span class="pill" id="versionBadge">v0.1.5 · Build 1.5</span>
       </div>
     </header>
 
@@ -51,6 +51,55 @@
               <em>Testing &amp; future builds</em>
             </span>
           </a>
+        </div>
+      </section>
+
+      <section class="portal-section productivity-section" aria-labelledby="findTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">FIND &amp; RETURN</p>
+            <h2 id="findTitle">Quick Search &amp; Shortcuts</h2>
+          </div>
+          <p>Search every destination, pin favorites, and jump back to links you recently opened.</p>
+        </div>
+
+        <div class="search-card">
+          <div class="search-label-row">
+            <label for="portalSearch">Search the Portal</label>
+            <span class="keyboard-hint"><kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>K</kbd></span>
+          </div>
+          <div class="search-field-wrap">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="portalSearch" type="search" autocomplete="off" spellcheck="false" placeholder="Try “Arcade Saturday”, “Golf Holiday”, or “Audit”…" aria-controls="searchResults" aria-expanded="false">
+            <button type="button" class="search-clear" id="clearSearch" aria-label="Clear search" hidden>Clear</button>
+          </div>
+          <div class="search-results" id="searchResults" hidden aria-live="polite"></div>
+        </div>
+
+        <div class="shortcut-columns">
+          <section class="shortcut-panel" aria-labelledby="favoritesTitle">
+            <div class="shortcut-header">
+              <div>
+                <span class="shortcut-icon" aria-hidden="true">★</span>
+                <h3 id="favoritesTitle">Favorites</h3>
+              </div>
+              <span class="shortcut-count" id="favoriteCount">0</span>
+            </div>
+            <div class="shortcut-list" id="favoritesList"></div>
+            <p class="shortcut-empty" id="favoritesEmpty">Star any destination to keep it one click away.</p>
+          </section>
+
+          <section class="shortcut-panel" aria-labelledby="recentTitle">
+            <div class="shortcut-header">
+              <div>
+                <span class="shortcut-icon" aria-hidden="true">↺</span>
+                <h3 id="recentTitle">Recently Opened</h3>
+              </div>
+              <button type="button" class="text-button" id="clearRecent" hidden>Clear</button>
+            </div>
+            <div class="shortcut-list" id="recentList"></div>
+            <p class="shortcut-empty" id="recentEmpty">Links you open from the Portal will appear here.</p>
+          </section>
         </div>
       </section>
 
@@ -92,14 +141,14 @@
         <div aria-hidden="true">💡</div>
         <div>
           <strong>This Portal is navigation-only.</strong>
-          <p>It does not read or modify the signage system, Apps Script, schedules, or telemetry. Links are configured separately in <code>js/portal-config.js</code>.</p>
+          <p>It does not read or modify the signage system, Apps Script, schedules, or telemetry. Favorites, recent links, and the open profile are stored only in this browser.</p>
         </div>
       </section>
     </main>
 
     <footer>
       <span>Mini Golf Operations Portal</span>
-      <span id="footerVersion">v0.1.4 · Build 1.4 · Development</span>
+      <span id="footerVersion">v0.1.5 · Build 1.5 · Development</span>
     </footer>
   </div>
 
@@ -107,7 +156,7 @@
     <div class="noscript">JavaScript is required to render the Portal navigation.</div>
   </noscript>
 
-  <script src="js/portal-config.js?build=1.4"></script>
-  <script src="js/portal.js?build=1.4"></script>
+  <script src="js/portal-config.js?build=1.5"></script>
+  <script src="js/portal.js?build=1.5"></script>
 </body>
 </html>
