@@ -2,12 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#101722">
+  <meta name="application-name" content="Mini Golf Operations Portal">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mini Golf Portal">
   <title>Mini Golf Operations Portal</title>
   <link rel="icon" type="image/png" href="assets/icons/favicon.png">
-  <link rel="apple-touch-icon" href="assets/icons/favicon.png">
-  <link rel="stylesheet" href="css/portal.css?build=1.5">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest?build=1.6">
+  <link rel="stylesheet" href="css/portal.css?build=1.6">
 </head>
 <body>
   <div class="page-shell">
@@ -22,10 +27,19 @@
         </div>
       </div>
       <div class="release-meta" aria-label="Portal version information">
+        <button type="button" class="pill install-button" id="installPortal" hidden>Install Portal</button>
         <span class="pill pill-dev" id="channelBadge">Development</span>
-        <span class="pill" id="versionBadge">v0.1.5 · Build 1.5</span>
+        <span class="pill" id="versionBadge">v0.1.6 · Build 1.6</span>
       </div>
     </header>
+
+    <div class="install-tip" id="installTip" hidden role="status" aria-live="polite">
+      <div>
+        <strong>Add the Portal to your Home Screen</strong>
+        <p>Open your browser Share menu, choose <b>Add to Home Screen</b>, then confirm Add.</p>
+      </div>
+      <button type="button" class="install-tip-close" id="installTipClose">Close</button>
+    </div>
 
     <main>
       <section class="hero">
@@ -141,14 +155,14 @@
         <div aria-hidden="true">💡</div>
         <div>
           <strong>This Portal is navigation-only.</strong>
-          <p>It does not read or modify the signage system, Apps Script, schedules, or telemetry. Favorites, recent links, and the open profile are stored only in this browser.</p>
+          <p>It does not read or modify the signage system, Apps Script, schedules, or telemetry. Favorites, recent links, and the open profile are stored only in this browser. Build 1.6 can also be installed as an app and keeps a cached Portal shell available if the network drops.</p>
         </div>
       </section>
     </main>
 
     <footer>
       <span>Mini Golf Operations Portal</span>
-      <span id="footerVersion">v0.1.5 · Build 1.5 · Development</span>
+      <span id="footerVersion">v0.1.6 · Build 1.6 · Development</span>
     </footer>
   </div>
 
@@ -156,7 +170,7 @@
     <div class="noscript">JavaScript is required to render the Portal navigation.</div>
   </noscript>
 
-  <script src="js/portal-config.js?build=1.5"></script>
-  <script src="js/portal.js?build=1.5"></script>
+  <script src="js/portal-config.js?build=1.6"></script>
+  <script src="js/portal.js?build=1.6"></script>
 </body>
 </html>

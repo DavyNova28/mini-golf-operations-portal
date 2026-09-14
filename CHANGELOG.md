@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.1.6 — Build 1.6
+
+### Added
+- Added Progressive Web App metadata through `manifest.webmanifest`.
+- Added install support for compatible desktop and Android browsers through the native browser install prompt.
+- Added iPhone/iPad **Add to Home Screen** guidance for browsers that do not expose the native install prompt.
+- Added a conservative service worker that keeps the Portal shell available from cache when the network is unavailable.
+- Added dedicated 180×180 Apple touch, 192×192 PWA, 512×512 PWA, and maskable app icons derived from the supplied Jurassique artwork.
+
+### Changed
+- Added iPhone/iPad safe-area support for standalone Home Screen mode.
+- Added standalone app metadata and updated theme/application metadata.
+- Updated Portal version metadata and cache markers to Build 1.6.
+- Kept `js/portal-config.js` as the persistent verified destination configuration; no new configuration structure is required.
+
+### Reliability
+- Portal JavaScript, CSS, configuration, and metadata use a network-first cache strategy so live GitHub Pages files remain preferred.
+- External Dashboard and Google Sheets links are never intercepted or cached by the service worker.
+- Old Portal service-worker caches are removed automatically when a newer cache version activates.
+
 ## v0.1.5 — Build 1.5
 
 ### Added
