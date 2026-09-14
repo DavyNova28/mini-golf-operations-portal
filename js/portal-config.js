@@ -16,9 +16,9 @@ window.PORTAL_CONFIG = {
   },
 
   quickLinks: [
-    { id: "operationsSheet", icon: "📗", label: "Operations Google Sheet", detail: "Shared operational workbook", url: "" },
-    { id: "audit", icon: "🧾", label: "Audit Logs", detail: "System activity history", url: "" },
-    { id: "backups", icon: "💾", label: "Backup History", detail: "Schedule backups", url: "" }
+    { id: "operationsSheet", icon: "📗", label: "Operations Google Sheet", detail: "Shared operational workbook", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1054965962#gid=1054965962" },
+    { id: "audit", icon: "🧾", label: "Audit Logs", detail: "System activity history", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=844074778#gid=844074778" },
+    { id: "backups", icon: "💾", label: "Backup History", detail: "Schedule backups", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1822898361#gid=1822898361" }
   ],
 
   profiles: [
@@ -31,41 +31,41 @@ window.PORTAL_CONFIG = {
         {
           title: "Arcade",
           links: [
-            { label: "Closed", tab: "ArcadeRegularClosed", url: "" },
-            { label: "Wednesday", tab: "ArcadeRegularWed", url: "" },
-            { label: "Thursday / Friday", tab: "ArcadeRegularThuFri", url: "" },
-            { label: "Saturday", tab: "ArcadeRegularSat", url: "" },
-            { label: "Sunday", tab: "ArcadeRegularSun", url: "" }
+            { label: "Closed", tab: "ArcadeRegularClosed", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1576431645#gid=1576431645" },
+            { label: "Wednesday", tab: "ArcadeRegularWed", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=193628438#gid=193628438" },
+            { label: "Thursday / Friday", tab: "ArcadeRegularThuFri", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=584469926#gid=584469926" },
+            { label: "Saturday", tab: "ArcadeRegularSat", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1827276194#gid=1827276194" },
+            { label: "Sunday", tab: "ArcadeRegularSun", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=717565053#gid=717565053" }
           ]
         },
         {
           title: "Golf",
           links: [
-            { label: "Closed", tab: "GolfRegularClosed", url: "" },
-            { label: "Wednesday", tab: "GolfRegularWed", url: "" },
-            { label: "Thursday / Friday", tab: "GolfRegularThuFri", url: "" },
-            { label: "Saturday", tab: "GolfRegularSat", url: "" },
-            { label: "Sunday", tab: "GolfRegularSun", url: "" }
+            { label: "Closed", tab: "GolfRegularClosed", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=311802604#gid=311802604" },
+            { label: "Wednesday", tab: "GolfRegularWed", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=644370409#gid=644370409" },
+            { label: "Thursday / Friday", tab: "GolfRegularThuFri", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1253682426#gid=1253682426" },
+            { label: "Saturday", tab: "GolfRegularSat", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1691160278#gid=1691160278" },
+            { label: "Sunday", tab: "GolfRegularSun", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1544211730#gid=1544211730" }
           ]
         },
         {
           title: "Slush",
           links: [
-            { label: "Closed", tab: "SlushRegularClosed", url: "" },
-            { label: "Wednesday", tab: "SlushRegularWed", url: "" },
-            { label: "Thursday / Friday", tab: "SlushRegularThuFri", url: "" },
-            { label: "Saturday", tab: "SlushRegularSat", url: "" },
-            { label: "Sunday", tab: "SlushRegularSun", url: "" }
+            { label: "Closed", tab: "SlushRegularClosed", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=2020440419#gid=2020440419" },
+            { label: "Wednesday", tab: "SlushRegularWed", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=159244622#gid=159244622" },
+            { label: "Thursday / Friday", tab: "SlushRegularThuFri", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1264273938#gid=1264273938" },
+            { label: "Saturday", tab: "SlushRegularSat", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=610417010#gid=610417010" },
+            { label: "Sunday", tab: "SlushRegularSun", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1696350074#gid=1696350074" }
           ]
         },
         {
           title: "Info Arcade",
           links: [
-            { label: "Closed", tab: "infoArcadeRegularClosed", url: "" },
-            { label: "Wednesday", tab: "infoArcadeRegularWed", url: "" },
-            { label: "Thursday / Friday", tab: "infoArcadeRegularThuFri", url: "" },
-            { label: "Saturday", tab: "infoArcadeRegularSat", url: "" },
-            { label: "Sunday", tab: "infoArcadeRegularSun", url: "" }
+            { label: "Closed", tab: "infoArcadeRegularClosed", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=928245894#gid=928245894" },
+            { label: "Wednesday", tab: "infoArcadeRegularWed", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=2147034885#gid=2147034885" },
+            { label: "Thursday / Friday", tab: "infoArcadeRegularThuFri", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1637948919#gid=1637948919" },
+            { label: "Saturday", tab: "infoArcadeRegularSat", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=670782306#gid=670782306" },
+            { label: "Sunday", tab: "infoArcadeRegularSun", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1832228553#gid=1832228553" }
           ]
         }
       ]
@@ -79,30 +79,30 @@ window.PORTAL_CONFIG = {
         {
           title: "Arcade",
           links: [
-            { label: "Monday - Thursday", tab: "ArcadeWeek", url: "" },
-            { label: "Friday - Saturday", tab: "Arcade", url: "" },
-            { label: "Sunday", tab: "ArcadeSunday", url: "" }
+            { label: "Monday - Thursday", tab: "ArcadeWeek", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=658363605#gid=658363605" },
+            { label: "Friday - Saturday", tab: "Arcade", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=0#gid=0" },
+            { label: "Sunday", tab: "ArcadeSunday", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=772696316#gid=772696316" }
           ]
         },
         {
           title: "Golf",
           links: [
-            { label: "Monday - Saturday", tab: "Golf", url: "" },
-            { label: "Sunday", tab: "GolfSunday", url: "" }
+            { label: "Monday - Saturday", tab: "Golf", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=523286119#gid=523286119" },
+            { label: "Sunday", tab: "GolfSunday", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=312186726#gid=312186726" }
           ]
         },
         {
           title: "Slush",
           links: [
-            { label: "Monday - Saturday", tab: "Slush", url: "" },
-            { label: "Sunday", tab: "SlushSunday", url: "" }
+            { label: "Monday - Saturday", tab: "Slush", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1337977680#gid=1337977680" },
+            { label: "Sunday", tab: "SlushSunday", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=2106383195#gid=2106383195" }
           ]
         },
         {
           title: "Info Arcade",
           links: [
-            { label: "Monday - Saturday", tab: "infoArcade", url: "" },
-            { label: "Sunday", tab: "infoArcadeSunday", url: "" }
+            { label: "Monday - Saturday", tab: "infoArcade", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=881672756#gid=881672756" },
+            { label: "Sunday", tab: "infoArcadeSunday", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1183277175#gid=1183277175" }
           ]
         }
       ]
@@ -116,25 +116,25 @@ window.PORTAL_CONFIG = {
         {
           title: "Golf",
           links: [
-            { label: "Holiday", tab: "GolfHoliday", url: "" }
+            { label: "Holiday", tab: "GolfHoliday", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=702289736#gid=702289736" }
           ]
         },
         {
           title: "Arcade",
           links: [
-            { label: "Holiday", tab: "ArcadeHoliday", url: "" }
+            { label: "Holiday", tab: "ArcadeHoliday", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=415857844#gid=415857844" }
           ]
         },
         {
           title: "Slush",
           links: [
-            { label: "Holiday", tab: "SlushHoliday", url: "" }
+            { label: "Holiday", tab: "SlushHoliday", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1436504138#gid=1436504138" }
           ]
         },
         {
           title: "Info Arcade",
           links: [
-            { label: "Holiday", tab: "infoArcadeHoliday", url: "" }
+            { label: "Holiday", tab: "infoArcadeHoliday", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=924083883#gid=924083883" }
           ]
         }
       ]
@@ -148,13 +148,13 @@ window.PORTAL_CONFIG = {
         {
           title: "Golf",
           links: [
-            { label: "Wednesday", tab: "GolfPromoWednesday", url: "" }
+            { label: "Wednesday", tab: "GolfPromoWednesday", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=683280292#gid=683280292" }
           ]
         },
         {
           title: "Arcade",
           links: [
-            { label: "Thursday", tab: "ArcadePromoThursday", url: "" }
+            { label: "Thursday", tab: "ArcadePromoThursday", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1778411904#gid=1778411904" }
           ]
         }
       ]
