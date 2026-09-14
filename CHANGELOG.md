@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.1.4 — Build 1.4
+
+### Changed
+- Rebuilt Schedule Profiles around the actual Google Sheets tab structure used by operations.
+- Regular Profile now exposes 20 exact source tabs grouped under Arcade, Golf, Slush, and Info Arcade.
+- Summer Profile now exposes 9 exact source tabs grouped by screen and operating-day range.
+- Holiday Profile now exposes GolfHoliday, ArcadeHoliday, SlushHoliday, and infoArcadeHoliday.
+- Promo Profile now exposes GolfPromoWednesday and ArcadePromoThursday.
+- Each destination now shows a friendly schedule label plus the exact Google Sheets tab name.
+- Profile destination groups now use a clearer two-column card layout on larger screens and collapse to one column on mobile.
+- Empty destinations continue to display **Not configured** safely until their URLs are added.
+- Updated Portal version metadata and cache markers to Build 1.4.
+
 ## v0.1.3 — Build 1.3
 
 ### Changed

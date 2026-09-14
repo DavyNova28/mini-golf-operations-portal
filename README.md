@@ -4,8 +4,8 @@ A lightweight navigation hub for Mini Golf & Arcades operations.
 
 ## Build
 
-- Version: `v0.1.3`
-- Build: `1.3`
+- Version: `v0.1.4`
+- Build: `1.4`
 - Channel: `Development`
 
 ## Purpose
@@ -49,6 +49,19 @@ Schedule Profile cards behave like an accordion selector:
 - Click a different profile card to switch the open panel to that profile.
 - The **Close** button remains available inside the open panel.
 
+## Schedule Tab Structure
+
+Build 1.4 models the actual Operations Google Sheet tabs used by each schedule profile. The Portal groups those tabs by screen so a profile can contain every source tab it needs instead of a single generic destination.
+
+Current profile structure:
+
+- Regular Profile: 20 tabs across Arcade, Golf, Slush, and Info Arcade.
+- Summer Profile: 9 tabs across Arcade, Golf, Slush, and Info Arcade.
+- Holiday Profile: 4 source tabs.
+- Promo Profile: 2 source tabs.
+
+Each destination shows both a friendly schedule label and the exact Google Sheets tab name.
+
 ## Configure Links
 
 All destinations are centralized in:
@@ -57,7 +70,7 @@ All destinations are centralized in:
 
 The PROD and DEV Dashboard links are already configured. The Portal uses one shared Operations Google Sheet for both environments.
 
-For the shared Operations Google Sheet and profile destinations, replace each empty URL:
+For the shared Operations Google Sheet and each individual schedule tab, replace the matching empty URL:
 
 ```js
 url: ""
@@ -69,7 +82,7 @@ with the full destination URL, for example:
 url: "https://docs.google.com/spreadsheets/d/.../edit#gid=123456789"
 ```
 
-If a URL remains empty, the Portal safely shows the destination as **Not configured** instead of opening a broken link.
+If a URL remains empty, the Portal safely shows the destination as **Not configured** while still displaying the exact Google Sheets tab name.
 
 ## Recommended GitHub Pages URL
 
