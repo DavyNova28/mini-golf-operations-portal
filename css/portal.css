@@ -137,6 +137,19 @@ kbd { min-width: 22px; display: inline-grid; place-items: center; padding: 2px 5
 .shortcut-header h3 { margin: 0; font-size: 14px; }
 .shortcut-count { min-width: 28px; padding: 4px 8px; border-radius: 999px; background: var(--surface-2); color: var(--muted); text-align: center; font-size: 11px; font-weight: 800; }
 .shortcut-list { display: grid; gap: 8px; }
+#recentList {
+  max-height: 184px; /* 3 shortcut rows + 2 gaps */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: #41546e transparent;
+}
+#recentList::-webkit-scrollbar { width: 8px; }
+#recentList::-webkit-scrollbar-track { background: transparent; }
+#recentList::-webkit-scrollbar-thumb { background: #41546e; border-radius: 999px; }
+#recentList::-webkit-scrollbar-thumb:hover { background: #526b8a; }
 .shortcut-empty { margin: 20px 2px 4px; color: var(--muted-2); font-size: 12px; line-height: 1.5; }
 .shortcut-link { min-height: 56px; }
 .shortcut-link .result-icon { width: 30px; height: 30px; }
