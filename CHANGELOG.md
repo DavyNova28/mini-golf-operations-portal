@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.1.9 — Build 1.9
+
+### Changed
+- Limited the visible **Favorites** list to 4 destinations at a time.
+- Added an internal vertical scroll area when more than 4 Favorites are saved, preventing the Favorites panel from making the Portal page progressively taller.
+- Kept the existing 12-favorite storage limit unchanged, so additional Favorites remain available by scrolling inside the panel.
+- Kept the Build 1.8 **Recently Opened** behavior unchanged at 3 visible destinations before internal scrolling.
+- Kept `js/portal-config.js` unchanged; no destination or URL migration is required.
+- Updated Portal version metadata, service-worker cache identity, and cache-busting markers to Build 1.9.
+
 ## v0.1.8 — Build 1.8
 
 ### Changed
