@@ -2,8 +2,8 @@
   "use strict";
 
   const VERSION_FALLBACK = {
-    version: "0.1.5",
-    build: "1.5",
+    version: "0.1.6",
+    build: "1.6",
     channel: "Development",
     status: "Development"
   };
@@ -549,6 +549,88 @@
       .replaceAll("'", "&#039;");
   }
 
+  function isStandaloneMode() {
+    return Boolean(
+      window.matchMedia?.("(display-mode: standalone)").matches ||
+      window.navigator.standalone === true
+    );
+  }
+
+  function isIosLikeDevice() {
+    const userAgent = navigator.userAgent || "";
+    const platform = navigator.platform || "";
+    return /iPad|iPhone|iPod/i.test(userAgent) || (platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  }
+
+  function setupInstallExperience() {
+    const installButton = $("installPortal");
+    const installTip = $("installTip");
+    const closeTip = $("installTipClose");
+    if (!installButton || !installTip || !closeTip) return;
+
+    let deferredInstallPrompt = null;
+
+    const hideInstallUi = () => {
+      installButton.hidden = true;
+      installTip.hidden = true;
+      deferredInstallPrompt = null;
+    };
+
+    if (isStandaloneMode()) {
+      hideInstallUi();
+      return;
+    }
+
+    if (isIosLikeDevice()) {
+      installButton.hidden = false;
+      installButton.textContent = "Add to Home Screen";
+    }
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+      installButton.hidden = false;
+      installButton.textContent = "Install Portal";
+      installTip.hidden = true;
+    });
+
+    installButton.addEventListener("click", async () => {
+      if (deferredInstallPrompt) {
+        deferredInstallPrompt.prompt();
+        try {
+          const choice = await deferredInstallPrompt.userChoice;
+          if (choice?.outcome === "accepted") hideInstallUi();
+          else deferredInstallPrompt = null;
+        } catch (_) {
+          deferredInstallPrompt = null;
+        }
+        return;
+      }
+
+      installTip.hidden = !installTip.hidden;
+      if (!installTip.hidden) closeTip.focus({ preventScroll: true });
+    });
+
+    closeTip.addEventListener("click", () => {
+      installTip.hidden = true;
+      installButton.focus({ preventScroll: true });
+    });
+
+    window.addEventListener("appinstalled", hideInstallUi);
+  }
+
+  function registerServiceWorker() {
+    if (!("serviceWorker" in navigator) || !window.isSecureContext) return;
+
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("service-worker.js", { scope: "./" })
+        .then((registration) => registration.update())
+        .catch(() => {
+          // Installation/offline support is optional; Portal navigation still works without it.
+        });
+    }, { once: true });
+  }
+
   async function loadVersion() {
     let data = VERSION_FALLBACK;
     try {
@@ -570,6 +652,8 @@
     renderProfiles();
     renderQuickLinks();
     setupSearch();
+    setupInstallExperience();
+    registerServiceWorker();
     loadVersion();
 
     $("closeProfilePanel").addEventListener("click", closeProfile);
