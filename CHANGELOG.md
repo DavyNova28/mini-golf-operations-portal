@@ -1,3 +1,15 @@
+## v0.1.10 — Build 1.10
+
+### Changed
+- Reworked **Schedule Profile** destination actions using the cleaner inline-copy design.
+- Removed the separate full-height Copy Link button from Schedule Profile rows.
+- Added a subtle Copy Link icon inside each schedule card, with tooltip/accessible labeling and the existing copied-link toast feedback.
+- Kept the Favorite star as the dedicated action button on the right side of every schedule destination.
+- Kept Quick Access, Search results, Favorites, and Recently Opened Copy Link controls unchanged for this focused UI update.
+- Preserved Build 1.9.1 compact Favorites/Recently Opened scrolling behavior.
+- Kept `js/portal-config.js` unchanged; no destination or URL migration is required.
+- Bumped Portal and service-worker cache markers to Build 1.10.
+
 # Changelog
 
 ## v0.1.9.1 — Build 1.9.1

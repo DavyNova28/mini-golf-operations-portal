@@ -1,7 +1,7 @@
 "use strict";
 
 const CACHE_PREFIX = "mini-golf-operations-portal-";
-const CACHE_NAME = `${CACHE_PREFIX}v0.1.9.1-build-1.9.1`;
+const CACHE_NAME = `${CACHE_PREFIX}v0.1.10-build-1.10`;
 const CORE_ASSETS = [
   "./",
   "./index.html",
