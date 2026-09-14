@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.1.9.1 — Build 1.9.1
+
+### Fixed
+- Hardened the **Favorites** viewport so more than 4 saved Favorites can no longer expand the Portal page.
+- Added a JavaScript-measured row limit in addition to the CSS fallback, ensuring the Favorites panel scrolls internally after the fourth visible destination.
+- Applied the same measured viewport logic to **Recently Opened** so its existing 3-row limit remains reliable across browser/PWA cache transitions.
+- Recalculates the shortcut viewport after window resizing so the scroll boundary stays correct on desktop and mobile.
+- Kept the 12-Favorite and 8-recent storage limits unchanged.
+- Kept `js/portal-config.js` unchanged; no destination or URL migration is required.
+- Bumped Portal and service-worker cache markers to Build 1.9.1.
+
 ## v0.1.9 — Build 1.9
 
 ### Changed
