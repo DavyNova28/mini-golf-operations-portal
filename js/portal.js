@@ -2,8 +2,8 @@
   "use strict";
 
   const VERSION_FALLBACK = {
-    version: "0.1.9",
-    build: "1.9",
+    version: "0.1.9.1",
+    build: "1.9.1",
     channel: "Development",
     status: "Development"
   };
@@ -17,6 +17,8 @@
   const MAX_FAVORITES = 12;
   const MAX_RECENT = 8;
   const MAX_SEARCH_RESULTS = 12;
+  const VISIBLE_FAVORITES = 4;
+  const VISIBLE_RECENT = 3;
 
   const config = window.PORTAL_CONFIG || {};
   const $ = (id) => document.getElementById(id);
@@ -512,7 +514,9 @@
   function renderFavorites() {
     favorites = cleanStoredIds(favorites, MAX_FAVORITES);
     safeWriteStorage(STORAGE_KEYS.favorites, favorites);
-    renderShortcutList($("favoritesList"), favorites, true);
+    const host = $("favoritesList");
+    renderShortcutList(host, favorites, true);
+    applyShortcutViewportLimit(host, VISIBLE_FAVORITES);
     $("favoriteCount").textContent = String(favorites.length);
     $("favoritesEmpty").hidden = favorites.length > 0;
   }
@@ -520,9 +524,37 @@
   function renderRecent() {
     recent = cleanStoredIds(recent, MAX_RECENT);
     safeWriteStorage(STORAGE_KEYS.recent, recent);
-    renderShortcutList($("recentList"), recent, false);
+    const host = $("recentList");
+    renderShortcutList(host, recent, false);
+    applyShortcutViewportLimit(host, VISIBLE_RECENT);
     $("recentEmpty").hidden = recent.length > 0;
     $("clearRecent").hidden = recent.length === 0;
+  }
+
+  function applyShortcutViewportLimit(host, visibleCount) {
+    if (!host) return;
+
+    // Enforce the visible-row limit in JavaScript as well as CSS. This makes
+    // the compact panels reliable even if an older stylesheet is temporarily
+    // served by a browser/PWA cache during an update.
+    window.requestAnimationFrame(() => {
+      const rows = Array.from(host.children);
+      if (rows.length <= visibleCount) {
+        host.style.maxHeight = "none";
+        host.style.overflowY = "visible";
+        return;
+      }
+
+      const styles = window.getComputedStyle(host);
+      const gap = Number.parseFloat(styles.rowGap || styles.gap || "0") || 0;
+      const visibleRows = rows.slice(0, visibleCount);
+      const height = visibleRows.reduce((total, row) => total + row.getBoundingClientRect().height, 0)
+        + gap * Math.max(0, visibleRows.length - 1);
+
+      host.style.maxHeight = `${Math.ceil(height)}px`;
+      host.style.overflowY = "auto";
+      host.style.overscrollBehavior = "contain";
+    });
   }
 
   function renderShortcutList(host, ids, favoriteMode) {
@@ -814,6 +846,15 @@
     $("clearRecent").addEventListener("click", clearRecent);
 
     restoreBrowserState();
+
+    let shortcutResizeTimer = null;
+    window.addEventListener("resize", () => {
+      window.clearTimeout(shortcutResizeTimer);
+      shortcutResizeTimer = window.setTimeout(() => {
+        applyShortcutViewportLimit($("favoritesList"), VISIBLE_FAVORITES);
+        applyShortcutViewportLimit($("recentList"), VISIBLE_RECENT);
+      }, 100);
+    });
   }
 
   init();
