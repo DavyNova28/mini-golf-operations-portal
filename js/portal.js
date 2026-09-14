@@ -2,8 +2,8 @@
   "use strict";
 
   const VERSION_FALLBACK = {
-    version: "0.1.6",
-    build: "1.6",
+    version: "0.1.7",
+    build: "1.7",
     channel: "Development",
     status: "Development"
   };
@@ -24,6 +24,7 @@
   let activeProfileId = null;
   let favorites = [];
   let recent = [];
+  let toastTimer = null;
 
   function isConfiguredUrl(url) {
     return typeof url === "string" && /^https?:\/\//i.test(url.trim());
@@ -242,9 +243,28 @@
       const section = document.createElement("section");
       section.className = "link-group";
 
+      const groupHeader = document.createElement("div");
+      groupHeader.className = "link-group-header";
+
       const heading = document.createElement("h4");
       heading.textContent = group.title || "Links";
-      section.appendChild(heading);
+      groupHeader.appendChild(heading);
+
+      const configuredGroupDestinations = (group.links || [])
+        .map((item) => destinationIndex.get(`schedule:${profile.id}:${item.tab || item.label}`))
+        .filter((destination) => destination && isConfiguredUrl(destination.url));
+
+      if (configuredGroupDestinations.length > 1) {
+        const openAllButton = document.createElement("button");
+        openAllButton.type = "button";
+        openAllButton.className = "group-open-all";
+        openAllButton.textContent = `Open All · ${configuredGroupDestinations.length}`;
+        openAllButton.setAttribute("aria-label", `Open all ${configuredGroupDestinations.length} ${group.title || "schedule"} tabs`);
+        openAllButton.addEventListener("click", () => openAllGroupLinks(group.title || "schedule", configuredGroupDestinations));
+        groupHeader.appendChild(openAllButton);
+      }
+
+      section.appendChild(groupHeader);
 
       const list = document.createElement("div");
       list.className = "link-list";
@@ -272,6 +292,7 @@
         }
 
         wrapper.appendChild(anchor);
+        wrapper.appendChild(createCopyButton(destination || { id: destinationId, label: item.label || "destination", url: item.url || "" }));
         wrapper.appendChild(createFavoriteButton(destination?.id || destinationId, destination?.label || item.label || "destination"));
         list.appendChild(wrapper);
       });
@@ -307,9 +328,140 @@
       if (!configured) anchor.querySelector("span:last-child").textContent = "Not configured";
 
       wrapper.appendChild(anchor);
+      wrapper.appendChild(createCopyButton(destination || { id: destinationId, label: item.label || "destination", url: item.url || "" }));
       wrapper.appendChild(createFavoriteButton(destination?.id || destinationId, destination?.label || item.label || "destination"));
       grid.appendChild(wrapper);
     });
+  }
+
+  function createCopyButton(destination) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "copy-button";
+    button.setAttribute("aria-label", `Copy ${destination?.label || "destination"} link`);
+    button.title = "Copy link";
+    button.textContent = "⧉";
+
+    if (!destination || !isConfiguredUrl(destination.url)) {
+      button.disabled = true;
+      button.setAttribute("aria-disabled", "true");
+      return button;
+    }
+
+    button.addEventListener("click", async () => {
+      const copied = await copyTextToClipboard(destination.url.trim());
+      if (!copied) {
+        showToast("Could not copy this link. Try again from your browser.", "error");
+        return;
+      }
+
+      const originalText = button.textContent;
+      button.textContent = "✓";
+      button.classList.add("copied");
+      button.setAttribute("aria-label", `${destination.label || "Destination"} link copied`);
+      showToast(`${destination.label || "Destination"} link copied.`);
+
+      window.setTimeout(() => {
+        button.textContent = originalText;
+        button.classList.remove("copied");
+        button.setAttribute("aria-label", `Copy ${destination.label || "destination"} link`);
+      }, 1400);
+    });
+
+    return button;
+  }
+
+  async function copyTextToClipboard(text) {
+    if (!text) return false;
+
+    try {
+      if (navigator.clipboard?.writeText && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch (_) {
+      // Fall through to the legacy copy method below.
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    textarea.style.pointerEvents = "none";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+
+    let copied = false;
+    try {
+      copied = document.execCommand("copy");
+    } catch (_) {
+      copied = false;
+    }
+    textarea.remove();
+    return copied;
+  }
+
+  function trackRecentBatch(destinationIds) {
+    const validIds = destinationIds.filter((id) => destinationIndex.has(id));
+    if (!validIds.length) return;
+    const validSet = new Set(validIds);
+    recent = [...validIds, ...recent.filter((id) => !validSet.has(id))].slice(0, MAX_RECENT);
+    safeWriteStorage(STORAGE_KEYS.recent, recent);
+    renderRecent();
+  }
+
+  function openAllGroupLinks(groupTitle, destinations) {
+    const configured = (destinations || []).filter((destination) => destination && isConfiguredUrl(destination.url));
+    if (!configured.length) {
+      showToast(`No configured ${groupTitle} links are available.`, "error");
+      return;
+    }
+
+    let openedCount = 0;
+    const openedIds = [];
+    configured.forEach((destination) => {
+      let popup = null;
+      try {
+        popup = window.open(destination.url.trim(), "_blank");
+        if (popup) {
+          popup.opener = null;
+          openedCount += 1;
+          openedIds.push(destination.id);
+        }
+      } catch (_) {
+        popup = null;
+      }
+    });
+
+    if (openedIds.length) trackRecentBatch(openedIds);
+
+    if (openedCount === configured.length) {
+      showToast(`Opened ${configured.length} ${groupTitle} tab${configured.length === 1 ? "" : "s"}.`);
+    } else if (openedCount > 0) {
+      showToast(`Opened ${openedCount} of ${configured.length} ${groupTitle} tabs. Your browser blocked the rest.`, "warning");
+    } else {
+      showToast(`Your browser blocked the ${groupTitle} tabs. Allow pop-ups and try again.`, "warning");
+    }
+  }
+
+  function showToast(message, type = "success") {
+    let toast = $("portalToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "portalToast";
+      toast.className = "portal-toast";
+      toast.setAttribute("role", "status");
+      toast.setAttribute("aria-live", "polite");
+      document.body.appendChild(toast);
+    }
+
+    window.clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.dataset.type = type;
+    toast.classList.add("visible");
+    toastTimer = window.setTimeout(() => toast.classList.remove("visible"), 3200);
   }
 
   function createFavoriteButton(destinationId, label) {
@@ -383,6 +535,7 @@
       row.className = "shortcut-item";
       const anchor = createCompactDestinationLink(destination, "shortcut-link");
       row.appendChild(anchor);
+      row.appendChild(createCopyButton(destination));
       row.appendChild(createFavoriteButton(destination.id, destination.label));
       host.appendChild(row);
     });
@@ -484,6 +637,7 @@
       const row = document.createElement("div");
       row.className = "search-result";
       row.appendChild(createCompactDestinationLink(destination, "search-result-link"));
+      row.appendChild(createCopyButton(destination));
       row.appendChild(createFavoriteButton(destination.id, destination.label));
       host.appendChild(row);
     });
