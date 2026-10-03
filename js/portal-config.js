@@ -1,5 +1,5 @@
 /*
-  Mini Golf Operations Portal - Build 1.4
+  Mini Golf Operations Portal - Build 1.12
   -------------------------------------
   All Google Sheets destinations are centralized here.
 
@@ -33,7 +33,8 @@ window.PORTAL_CONFIG = {
           links: [
             { label: "Closed", tab: "ArcadeRegularClosed", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1576431645#gid=1576431645" },
             { label: "Wednesday", tab: "ArcadeRegularWed", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=193628438#gid=193628438" },
-            { label: "Thursday / Friday", tab: "ArcadeRegularThuFri", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=584469926#gid=584469926" },
+            { label: "Thursday", tab: "ArcadeRegularThu", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=990594679#gid=990594679" },
+            { label: "Friday", tab: "ArcadeRegularFri", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=74712869#gid=74712869" },
             { label: "Saturday", tab: "ArcadeRegularSat", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=1827276194#gid=1827276194" },
             { label: "Sunday", tab: "ArcadeRegularSun", url: "https://docs.google.com/spreadsheets/d/1VjA9_pBBv8mjwCZqnmso3KmIP3bRI3FrT02GeD2XVKo/edit?gid=717565053#gid=717565053" }
           ]
