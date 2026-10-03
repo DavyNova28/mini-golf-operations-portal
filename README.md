@@ -4,8 +4,8 @@ A lightweight navigation hub for Mini Golf & Arcades operations.
 
 ## Build
 
-- Version: `v0.1.11`
-- Build: `1.11`
+- Version: `v0.1.12`
+- Build: `1.12`
 - Channel: `Development`
 - Stable checkpoint: `v0.1.4 / Build 1.4`
 
@@ -24,6 +24,32 @@ Its job is to provide one clean place to open:
 - Promo Schedule destinations
 - Audit Logs
 - Backup History
+
+## Build 1.12 — Arcade Thursday / Friday Navigation
+
+- Replaced the combined Arcade Regular **Thursday / Friday** link with individual **Thursday** and **Friday** links.
+- The new links target the existing live Google Sheets tabs `ArcadeRegularThu` (`gid=990594679`) and `ArcadeRegularFri` (`gid=74712869`).
+- The legacy `ArcadeRegularThuFri` tab remains untouched in Google Sheets as a backup; it is simply removed from the Portal's active Regular → Arcade shortcuts.
+- Other screen groups, existing destinations, Dashboard shortcuts, Favorites, Recently Opened, Copy Link, Open All, and PWA behavior are unchanged.
+- No changes to Google Sheets or Apps Script are made by installing this Portal package.
+
+### Files to upload
+
+Only these files need replacing in your single Portal GitHub repository:
+
+```text
+index.html
+js/portal-config.js
+js/portal.js
+version.json
+service-worker.js
+README.md
+CHANGELOG.md
+```
+
+`css/portal.css`, `manifest.webmanifest`, and all image assets are included for a complete package but are unchanged.
+
+**Important:** Unlike recent visual builds, **this build intentionally updates `js/portal-config.js`** because the Arcade schedule destinations have changed. Replace that file with the one included in this package. The original uploaded configuration was used as the source, preserving your permanent Dashboard URLs and the other Google Sheets destinations.
 
 ## Build 1.11 — Quick Access Inline Actions
 

@@ -1,3 +1,14 @@
+## v0.1.12 — Build 1.12
+
+### Schedule Navigation
+
+- Replaced `ArcadeRegularThuFri`'s combined Portal shortcut with individually linked `ArcadeRegularThu` and `ArcadeRegularFri` shortcuts under Regular Profile → Arcade.
+- Verified the new Thursday and Friday `gid` values against the connected Operations spreadsheet's current tab metadata.
+- Preserved all other source URLs and destinations, plus inline Copy Link, Favorites, Search, Open All, PWA and Recently Opened functionality.
+- Updated Portal/cache markers to Build 1.12; no signage or Apps Script changes.
+
+---
+
 ## v0.1.11 — Build 1.11
 
 ### Quick Access Inline Actions
